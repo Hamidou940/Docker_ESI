@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+        ubuntu:
+                build: .
+                container_name: product_site
+                volumes:
+                        - vol_share:/site
+        web:
+                image: nginx:1.9.12
+                container_name: srv_web
+                ports:
+                        - 8080:80
+                volumes:
+                        - vol_share:/usr/share/nginx/html
+
+volumes:
+        vol_share:
